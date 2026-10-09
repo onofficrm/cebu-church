@@ -18,7 +18,10 @@ jobs:
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
           FTP_PORT: ${{ secrets.FTP_PORT }}
-        run: python scripts/pull_ftp_snapshot.py
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lftp
+          python scripts/pull_ftp_snapshot.py
 
       - name: Upload snapshot
         uses: actions/upload-artifact@v4

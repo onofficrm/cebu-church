@@ -31,3 +31,4 @@ node_modules/
 
 # FTP에서 받은 임시 스냅샷
 ftp-snapshot/
+ftp-lftp.txt
