@@ -28,6 +28,7 @@ jobs:
           log-level: minimal
           exclude: |
             **/.git*
+            **/.git*/**
             **/.github/**
             **/.DS_Store
             **/.vscode/**
@@ -44,3 +45,51 @@ jobs:
             *.log
             .env
             .env.*
+
+      - name: Remove uploaded git metadata
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_PORT: ${{ secrets.FTP_PORT }}
+        run: |
+          python - <<'PY'
+          import os
+          from ftplib import FTP, error_perm
+
+          ftp = FTP()
+          ftp.connect(os.environ["FTP_SERVER"], int(os.environ["FTP_PORT"]), timeout=30)
+          ftp.login(os.environ["FTP_USERNAME"], os.environ["FTP_PASSWORD"])
+
+          try:
+              ftp.cwd("/public_html/.git")
+          except error_perm as exc:
+              print(f"nothing to remove: {exc}")
+          else:
+              def remove_here():
+                  lines = []
+                  ftp.retrlines("LIST", lines.append)
+                  for line in lines:
+                      parts = line.split(maxsplit=8)
+                      if len(parts) < 9:
+                          continue
+                      name = parts[8]
+                      if name in (".", ".."):
+                          continue
+                      if line.startswith("d"):
+                          ftp.cwd(name)
+                          remove_here()
+                          ftp.cwd("..")
+                          ftp.rmd(name)
+                          print(f"removed dir: {name}")
+                      else:
+                          ftp.delete(name)
+                          print(f"deleted file: {name}")
+
+              remove_here()
+              ftp.cwd("/public_html")
+              ftp.rmd(".git")
+              print("removed /public_html/.git")
+
+          ftp.quit()
+          PY
