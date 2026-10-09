@@ -46,7 +46,7 @@ def main():
     ]
     mirror = ["mirror", "--verbose", "--parallel=3"]
     for pattern in EXCLUDES:
-        mirror.append("--exclude-regex=" + lftp_quote(pattern))
+        mirror.append("--exclude=" + lftp_quote(pattern))
     mirror.extend([REMOTE_ROOT, LOCAL_ROOT])
     commands.append(" ".join(mirror))
     commands.append("bye")
