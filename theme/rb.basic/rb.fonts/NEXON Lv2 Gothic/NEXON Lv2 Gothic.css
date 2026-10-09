@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'font-N';
+    font-weight: 300;
+    font-style: normal;
+    src: url('./NEXON Lv2 Gothic.eot');
+    src: url('./NEXON Lv2 Gothic.eot?#iefix') format('embedded-opentype'),
+         url('./NEXON Lv2 Gothic.ttf') format("truetype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'font-L';
+    font-weight: 500;
+    font-style: normal;
+    src: url('./NEXON Lv2 Gothic Light.eot');
+    src: url('./NEXON Lv2 Gothic Light.eot?#iefix') format('embedded-opentype'),
+         url('./NEXON Lv2 Gothic Light.ttf') format("truetype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'font-B';
+    font-weight: 700;
+    font-style: normal;
+    src: url('./NEXON Lv2 Gothic Medium.eot');
+    src: url('./NEXON Lv2 Gothic Medium.eot?#iefix') format('embedded-opentype'),
+         url('./NEXON Lv2 Gothic Medium.ttf') format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'font-H';
+    font-weight: 900;
+    font-style: normal;
+    src: url('./NEXON Lv2 Gothic Bold.eot');
+    src: url('./NEXON Lv2 Gothic Bold.eot?#iefix') format('embedded-opentype'),
+         url('./NEXON Lv2 Gothic Bold.ttf') format("truetype");
+    font-display: swap;
+}
+
+h2 {font-weight: normal !important;}

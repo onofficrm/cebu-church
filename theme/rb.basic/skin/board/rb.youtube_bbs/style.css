@@ -1,0 +1,68 @@
+/* Reset & Global */
+.rb_board_wrap a { text-decoration: none; color: inherit; }
+.rb_board_wrap ul, .rb_board_wrap li { list-style: none; padding: 0; margin: 0; }
+.rb_board_wrap img { max-width: 100%; height: auto; }
+
+/* Custom Component Classes */
+.btn-tool {
+    @apply p-2.5 text-slate-400 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-all duration-200 flex items-center justify-center;
+}
+
+.btn-sub {
+    @apply px-4 py-2.5 bg-white border border-slate-200 rounded-lg text-sm font-bold text-slate-600 hover:bg-slate-50 hover:text-slate-900 hover:border-slate-300 transition-colors flex-1 md:flex-none shadow-sm;
+}
+
+.cate-tab {
+    @apply px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-200 whitespace-nowrap bg-white text-slate-500 border border-slate-200 hover:border-slate-300 hover:text-slate-700;
+}
+
+.cate-tab.active {
+    @apply bg-slate-900 text-white border-slate-900 shadow-md;
+}
+
+/* Utilities */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Pagination Styling */
+.pg_wrap { display: flex; justify-content: center; }
+.pg { display: flex; gap: 6px; }
+.pg_current { 
+    display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px;
+    background-color: #0f172a; /* bg-slate-900 */
+    color: #ffffff; 
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+.pg_page {
+    display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px;
+    background-color: #fff;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+    font-size: 0.9rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+.pg_page:hover {
+    background-color: #f8fafc;
+    color: #0f172a;
+    border-color: #cbd5e1;
+}
+.pg_start, .pg_prev, .pg_next, .pg_end {
+    text-indent: 0;
+    overflow: visible;
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 0.75rem;
+    color: #94a3b8;
+    background-color: transparent;
+}
+.pg_start:hover, .pg_prev:hover, .pg_next:hover, .pg_end:hover {
+    color: #334155;
+    background-color: #f1f5f9;
+}

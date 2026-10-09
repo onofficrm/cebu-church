@@ -1,0 +1,263 @@
+@charset "utf-8";
+
+/* ============================================================
+   세부한인교회 소개 페이지 전용 스타일 (최종 모바일 최적화 보정본)
+   - PC: 디자인 유지 / Mobile: 레이아웃 고정 및 감각적인 여백 적용
+   ============================================================ */
+
+/* 1. 에디터 자동 태그 간섭 방지 및 초기화 */
+.church-intro-container, 
+.church-intro-container *, 
+.church-intro-container *:before, 
+.church-intro-container *:after {
+    box-sizing: border-box !important;
+}
+
+/* 에디터가 삽입하는 불필요한 p, br, nbsp 태그 강제 숨김 */
+.church-intro-container > p, 
+.church-intro-container > br,
+.church-card > p,
+.main-wrapper > p,
+.staff-wrapper > p {
+    display: none !important; 
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+    line-height: 0 !important;
+}
+
+/* 실제 텍스트가 필요한 영역의 p 태그만 허용 */
+.church-intro-container .church-text-area p, 
+.church-intro-container .pastor-card p,
+.church-intro-container .staff-cell p {
+    display: block !important; 
+    margin: 0 0 15px 0 !important;
+    padding: 0 !important;
+    text-align: inherit !important;
+}
+
+.church-intro-container {
+    font-family: 'apple sd gothic neo', 'noto sans kr', sans-serif !important;
+    background-color: #ffffff !important;
+    padding: 20px 0 !important;
+    text-align: center !important;
+    width: 100% !important;
+}
+
+/* 2. 메인 카드 디자인 (그림자 제거 및 중앙 정렬) */
+.church-card {
+    max-width: 1000px !important;
+    width: 95% !important;
+    margin: 0 auto !important;
+    background: #fff !important;
+    border: 1px solid #eeeeee !important;
+    overflow: hidden !important;
+    display: block !important;
+    box-shadow: none !important;
+}
+
+/* 3. 헤더 섹션 */
+.church-header {
+    padding: 40px 20px !important;
+    border-bottom: 1px solid #f9f9f9 !important;
+    text-align: center !important;
+}
+
+.church-logo-img {
+    max-width: 260px !important;
+    height: auto !important;
+    margin: 0 auto 15px auto !important;
+    display: block !important;
+}
+
+.main-slogan {
+    font-size: 20px !important;
+    color: #8b572a !important;
+    font-weight: 700 !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+    display: block !important;
+}
+
+/* 4. 메인 콘텐츠 (데스크탑 가로 배치) */
+.main-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important; 
+    width: 100% !important;
+    background-color: #fffaf6 !important;
+    text-align: left !important;
+}
+
+.main-content-cell {
+    flex: 1 !important;
+    padding: 45px !important;
+}
+
+.main-pastor-cell {
+    width: 340px !important;
+    padding: 45px !important;
+    flex-shrink: 0 !important;
+}
+
+.church-text-area h2 {
+    font-size: 26px !important;
+    margin: 0 0 20px 0 !important;
+    border-left: 6px solid #d97706 !important;
+    padding-left: 15px !important;
+    color: #222 !important;
+    font-weight: 800 !important;
+}
+
+.church-text-area p {
+    font-size: 15px !important;
+    color: #444 !important;
+    line-height: 1.8 !important;
+}
+
+/* 5. 목사님 카드 */
+.pastor-card {
+    background: #fff !important;
+    padding: 15px !important;
+    border: 1px solid #efefef !important;
+    text-align: center !important;
+}
+
+.pastor-img {
+    width: 100% !important;
+    height: 320px !important; 
+    border-radius: 4px !important;
+    margin-bottom: 15px !important;
+    display: block !important;
+    object-fit: cover !important;
+}
+
+/* 6. 사역자 섹션 */
+.staff-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    padding: 50px 10px !important;
+    background: #fff !important;
+    justify-content: center !important;
+    gap: 0 !important;
+}
+
+.staff-cell {
+    width: 30% !important;
+    min-width: 260px !important;
+    margin: 10px !important;
+    text-align: center !important;
+    vertical-align: top !important;
+}
+
+.staff-img-wrap {
+    position: relative !important;
+    width: 100% !important;
+    height: 320px !important; 
+    background: #f7f7f7 !important;
+    border-radius: 15px !important;
+    overflow: hidden !important;
+    margin-bottom: 15px !important;
+}
+
+.staff-img-wrap img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+}
+
+.welcome-badge {
+    position: absolute !important;
+    top: 10px !important;
+    left: 10px !important;
+    background: #ffffff !important;
+    padding: 6px 12px !important;
+    border-radius: 20px !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    color: #b45309 !important;
+    border: 1px solid #eee !important;
+}
+
+.staff-name {
+    font-weight: 800 !important;
+    font-size: 17px !important;
+    margin-bottom: 5px !important;
+    color: #333 !important;
+    text-align: center !important;
+}
+
+/* 7. 푸터 */
+.church-footer {
+    padding: 30px !important;
+    border-top: 1px solid #f1f1f1 !important;
+    font-size: 11px !important;
+    color: #aaaaaa !important;
+    text-align: center !important;
+}
+
+/* 8. 모바일 반응형 (화면이 768px 이하일 때 최적화) */
+@media screen and (max-width: 768px) {
+    .church-intro-container { padding: 5px 0 !important; }
+    
+    /* 카드가 화면에 꽉 차도록 설정 */
+    .church-card { 
+        width: 100% !important; 
+        max-width: 100% !important;
+        border-left: 0 !important; 
+        border-right: 0 !important; 
+        border-radius: 0 !important; 
+        margin: 0 !important;
+    }
+    
+    /* 레이아웃을 세로로 강제 전환 */
+    .main-wrapper { 
+        display: flex !important; 
+        flex-direction: column !important; 
+    }
+    
+    .main-content-cell { 
+        width: 100% !important;
+        padding: 35px 20px 10px 20px !important; 
+    }
+    
+    .main-pastor-cell { 
+        width: 100% !important; 
+        padding: 10px 20px 40px 20px !important; 
+    }
+    
+    .church-logo-img { max-width: 180px !important; }
+    .main-slogan { font-size: 17px !important; padding: 0 10px !important; }
+    
+    .church-text-area h2 { font-size: 22px !important; margin-bottom: 15px !important; }
+    .church-text-area p { font-size: 14.5px !important; line-height: 1.7 !important; }
+
+    /* 사역자 섹션 세로 정렬 및 개별 카드 강조 */
+    .staff-wrapper { 
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 30px 15px !important; 
+    }
+    
+    .staff-cell { 
+        width: 100% !important; 
+        max-width: 400px !important;
+        margin: 0 auto 40px auto !important; 
+        padding-bottom: 25px !important;
+        border-bottom: 1px solid #f0f0f0 !important;
+    }
+    
+    .staff-cell:last-child { 
+        border-bottom: 0 !important; 
+        margin-bottom: 0 !important; 
+    }
+    
+    /* 모바일에서 사진이 잘리지 않고 시원하게 보이도록 높이 조절 */
+    .pastor-img, .staff-img-wrap {
+        height: auto !important;
+        aspect-ratio: 4/5 !important;
+    }
+}
