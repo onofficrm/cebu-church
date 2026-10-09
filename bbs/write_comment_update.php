@@ -48,6 +48,10 @@ if ($is_guest) {
         alert('자동등록방지 숫자가 틀렸습니다.');
 }
 
+if (function_exists('spam_guard_assert')) {
+    spam_guard_assert('', isset($wr_content) ? $wr_content : '', 'comment');
+}
+
 if ($w == "c" || $w == "cu") {
     if ($member['mb_level'] < $board['bo_comment_level'])
         alert('댓글을 쓸 권한이 없습니다.');
