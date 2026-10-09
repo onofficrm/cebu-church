@@ -10,7 +10,7 @@ LOCAL_ROOT = "ftp-snapshot"
 
 EXCLUDES = [
     r"(^|/)(\.git|\.github|node_modules|_BUILDER_INPUT)(/|$)",
-    r"(^|/)data/(cache|session|file|log|tmp)(/|$)",
+    r"(^|/)data/(cache|session|file|log|tmp|editor|member_image|member)(/|$)",
     r"(^|/)(data/dbconfig\.php|data/dbconfig\.local\.php|data/icrm\.config\.php|config\.mail\.php)$",
     r"(^|/)\.env($|\.)",
     r"(^|/)cebu-church-deploy-v1$",
