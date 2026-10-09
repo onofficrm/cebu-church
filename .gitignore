@@ -28,3 +28,6 @@ node_modules/
 .vscode/
 *.swp
 *.swo
+
+# FTP에서 받은 임시 스냅샷
+ftp-snapshot/
