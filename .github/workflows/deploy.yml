@@ -14,26 +14,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Check FTP secret shape
-        env:
-          FTP_SERVER: ${{ secrets.FTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-          FTP_PORT: ${{ secrets.FTP_PORT }}
-        run: |
-          python - <<'PY'
-          import os
-          def shape(name):
-              value = os.environ.get(name, "")
-              print(f"{name}: length={len(value)} stripped={len(value.strip())} has_newline={chr(10) in value or chr(13) in value}")
-          shape("FTP_SERVER")
-          shape("FTP_USERNAME")
-          shape("FTP_PASSWORD")
-          shape("FTP_PORT")
-          port = os.environ.get("FTP_PORT", "").strip()
-          print(f"FTP_PORT: digits_only={port.isdigit()}")
-          PY
-
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
