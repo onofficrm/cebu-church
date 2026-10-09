@@ -8,6 +8,8 @@ on:
 
 jobs:
   ftp-deploy:
+    # Skip push deploys while a full import upload is still running.
+    if: ${{ github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
 
     steps:
