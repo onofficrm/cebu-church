@@ -22,7 +22,7 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_THEME_URL.'/rb.layout_hd/'.$rb
                 <!-- 토글메뉴 { -->
                 <ul class="tog_wrap mobile">
                     <li>
-                        <button type="button" alt="메뉴열기" id="tog_gnb_mobile">
+                        <button type="button" id="tog_gnb_mobile" aria-label="전체 메뉴 열기" aria-controls="cbp-hrmenu-btm">
                             <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M17 14C17.2549 14.0003 17.5 14.0979 17.6854 14.2728C17.8707 14.4478 17.9822 14.687 17.9972 14.9414C18.0121 15.1958 17.9293 15.4464 17.7657 15.6418C17.6021 15.8373 17.3701 15.9629 17.117 15.993L17 16H1C0.74512 15.9997 0.499968 15.9021 0.314632 15.7272C0.129296 15.5522 0.017765 15.313 0.00282788 15.0586C-0.0121092 14.8042 0.0706746 14.5536 0.234265 14.3582C0.397855 14.1627 0.629904 14.0371 0.883 14.007L1 14H17ZM17 7C17.2652 7 17.5196 7.10536 17.7071 7.29289C17.8946 7.48043 18 7.73478 18 8C18 8.26522 17.8946 8.51957 17.7071 8.70711C17.5196 8.89464 17.2652 9 17 9H1C0.734784 9 0.48043 8.89464 0.292893 8.70711C0.105357 8.51957 0 8.26522 0 8C0 7.73478 0.105357 7.48043 0.292893 7.29289C0.48043 7.10536 0.734784 7 1 7H17ZM17 0C17.2652 0 17.5196 0.105357 17.7071 0.292893C17.8946 0.48043 18 0.734784 18 1C18 1.26522 17.8946 1.51957 17.7071 1.70711C17.5196 1.89464 17.2652 2 17 2H1C0.734784 2 0.48043 1.89464 0.292893 1.70711C0.105357 1.51957 0 1.26522 0 1C0 0.734784 0.105357 0.48043 0.292893 0.292893C0.48043 0.105357 0.734784 0 1 0H17Z" fill="#09244B"/>
                             </svg>
@@ -45,7 +45,7 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_THEME_URL.'/rb.layout_hd/'.$rb
                 <!-- 로고 { -->
                 <ul class="logo_wrap">
                     <li>
-                        <a href="<?php echo G5_URL ?>" alt="<?php echo $config['cf_title']; ?>">
+                        <a href="<?php echo G5_URL ?>" aria-label="<?php echo $config['cf_title']; ?> 홈">
                            
                             <picture id="logo_img">
                                
@@ -143,7 +143,9 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_THEME_URL.'/rb.layout_hd/'.$rb
                         </a>
                         <?php } ?>
                        
-                        <button type="button" alt="검색" id="search_top_btn">
+                        <a class="mobile mobile_header_route" href="https://www.google.com/maps/search/?api=1&amp;query=402%20J.%20Solon%20Drive%20Kamputhaw%20Cebu%20City" target="_blank" rel="noopener" aria-label="세부한인교회 오시는 길">오시는 길</a>
+
+                        <button type="button" id="search_top_btn" aria-label="통합검색 열기" aria-expanded="false">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M8.49928 1.91687e-08C7.14387 0.000115492 5.80814 0.324364 4.60353 0.945694C3.39893 1.56702 2.36037 2.46742 1.57451 3.57175C0.788656 4.67609 0.278287 5.95235 0.0859852 7.29404C-0.106316 8.63574 0.0250263 10.004 0.469055 11.2846C0.913084 12.5652 1.65692 13.7211 2.63851 14.6557C3.6201 15.5904 4.81098 16.2768 6.11179 16.6576C7.4126 17.0384 8.78562 17.1026 10.1163 16.8449C11.447 16.5872 12.6967 16.015 13.7613 15.176L17.4133 18.828C17.6019 19.0102 17.8545 19.111 18.1167 19.1087C18.3789 19.1064 18.6297 19.0012 18.8151 18.8158C19.0005 18.6304 19.1057 18.3796 19.108 18.1174C19.1102 17.8552 19.0094 17.6026 18.8273 17.414L15.1753 13.762C16.1633 12.5086 16.7784 11.0024 16.9504 9.41573C17.1223 7.82905 16.8441 6.22602 16.1475 4.79009C15.4509 3.35417 14.3642 2.14336 13.0116 1.29623C11.659 0.449106 10.0952 -0.000107143 8.49928 1.91687e-08ZM1.99928 8.5C1.99928 6.77609 2.6841 5.12279 3.90308 3.90381C5.12207 2.68482 6.77537 2 8.49928 2C10.2232 2 11.8765 2.68482 13.0955 3.90381C14.3145 5.12279 14.9993 6.77609 14.9993 8.5C14.9993 10.2239 14.3145 11.8772 13.0955 13.0962C11.8765 14.3152 10.2232 15 8.49928 15C6.77537 15 5.12207 14.3152 3.90308 13.0962C2.6841 11.8772 1.99928 10.2239 1.99928 8.5Z" fill="#09244B"/>
                             </svg>
@@ -226,11 +228,13 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_THEME_URL.'/rb.layout_hd/'.$rb
                                     if (isSearchBoxVisible) {
                                         $('#search_box_wrap').show();
                                         $('#search_top_btn').addClass('ser_open');
+                                        $('#search_top_btn').attr('aria-expanded', 'true');
                                         $('#ser_inp_fc').focus();
                                         
                                     } else {
                                         $('#search_box_wrap').hide();
                                         $('#search_top_btn').removeClass('ser_open');
+                                        $('#search_top_btn').attr('aria-expanded', 'false');
                                     }
                                 });
 
@@ -238,6 +242,7 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_THEME_URL.'/rb.layout_hd/'.$rb
                                     if (isSearchBoxVisible) {
                                         $('#search_box_wrap').hide();
                                         $('#search_top_btn').removeClass('ser_open');
+                                        $('#search_top_btn').attr('aria-expanded', 'false');
                                         isSearchBoxVisible = false;
                                     }
                                 });

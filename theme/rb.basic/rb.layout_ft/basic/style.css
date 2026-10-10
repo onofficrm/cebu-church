@@ -1,4 +1,6 @@
 /* 레이아웃 CSS */
+footer .footer_copy_ul1_li2 a {color:#b8c0c8;}
+
 @media all and (max-width:1024px) { 
     .footer_gnb .inner {padding-left: 0px !important; padding-right: 0px !important;}
     .footer_copy .inner {padding-left: 0px !important; padding-right: 0px !important;}

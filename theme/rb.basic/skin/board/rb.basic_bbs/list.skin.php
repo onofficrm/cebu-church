@@ -9,6 +9,7 @@ add_stylesheet('<script src="https://unpkg.com/lucide@latest"></script>', 0);
 ?>
 
 <style>
+    #container_title { display: none !important; }
     /* Scoped font application to avoid affecting the global header/footer if possible, 
        but for consistency we apply to the wrapper class */
     .rb_board_wrap { font-family: 'Inter', 'Noto Sans KR', sans-serif; }
@@ -18,9 +19,10 @@ add_stylesheet('<script src="https://unpkg.com/lucide@latest"></script>', 0);
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     .line-clamp-1 { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
     .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .board-thumb-mobile { aspect-ratio: 4 / 3; height: auto; }
 </style>
 
-<div class="rb_board_wrap py-8 px-4 sm:px-6 max-w-5xl mx-auto">
+<div class="rb_board_wrap py-5 md:py-12 px-4 sm:px-6 max-w-5xl mx-auto">
     
     <!-- 게시판 목록 시작 -->
     <form name="fboardlist" id="fboardlist" action="<?php echo G5_BBS_URL; ?>/board_list_update.php" onsubmit="return fboardlist_submit(this);" method="post">
@@ -34,9 +36,9 @@ add_stylesheet('<script src="https://unpkg.com/lucide@latest"></script>', 0);
     <input type="hidden" name="sw" value="">
 
     <!-- Header Actions -->
-    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+    <div class="flex justify-between items-center gap-4 mb-5 md:mb-7">
         <h1 class="text-2xl font-bold text-slate-800 tracking-tight">
-            <a href="<?php echo $board_skin_url ?>"><?php echo $board['bo_subject'] ?></a>
+            <a href="<?php echo get_pretty_url($bo_table) ?>"><?php echo $board['bo_subject'] ?></a>
         </h1>
         
         <div class="flex items-center gap-2 self-end sm:self-auto">
@@ -46,7 +48,7 @@ add_stylesheet('<script src="https://unpkg.com/lucide@latest"></script>', 0);
             </a>
             <?php } ?>
             
-            <button type="button" class="btn_bo_sch p-2 text-slate-500 hover:bg-white hover:text-blue-600 hover:shadow-sm rounded-lg transition-all" title="검색">
+            <button type="button" class="btn_bo_sch p-2 text-slate-500 hover:bg-white hover:text-blue-600 hover:shadow-sm rounded-lg transition-all" title="검색" aria-label="게시글 검색 열기">
                 <i data-lucide="search" class="w-5 h-5"></i>
             </button>
             
@@ -66,10 +68,11 @@ add_stylesheet('<script src="https://unpkg.com/lucide@latest"></script>', 0);
     </div>
 
     <!-- Toolbar -->
-    <div class="flex flex-col sm:flex-row justify-between items-center bg-white p-3 rounded-xl border border-gray-200 shadow-sm mb-6 gap-3">
+    <div class="flex justify-between items-center bg-white px-3 py-2 rounded-xl border border-gray-100 mb-5 gap-3">
         <div class="flex items-center gap-4 w-full sm:w-auto">
             
-            <!-- Point Info Toggle -->
+            <?php if ($is_admin) { ?>
+            <!-- Point Info Toggle: 관리자에게만 표시 -->
             <div class="relative">
                 <button type="button" id="point_info_btn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium text-slate-600 hover:bg-gray-50 transition-colors">
                     <i data-lucide="info" class="w-4 h-4"></i>
@@ -101,8 +104,9 @@ add_stylesheet('<script src="https://unpkg.com/lucide@latest"></script>', 0);
                     </div>
                 </div>
             </div>
+            <?php } ?>
 
-            <div class="h-4 w-[1px] bg-gray-300 hidden sm:block"></div>
+            <?php if ($is_admin && $is_checkbox) { ?><div class="h-4 w-[1px] bg-gray-300 hidden sm:block"></div><?php } ?>
             
             <?php if ($is_checkbox) { ?>
             <div class="flex items-center gap-2">
@@ -112,8 +116,8 @@ add_stylesheet('<script src="https://unpkg.com/lucide@latest"></script>', 0);
             <?php } ?>
         </div>
 
-        <div class="text-sm text-slate-500 w-full sm:w-auto text-right bg-gray-50 sm:bg-transparent px-3 py-1.5 rounded sm:p-0">
-            전체 <span class="font-bold text-slate-800"><?php echo number_format($total_count) ?></span>건 / <?php echo $page ?> 페이지
+        <div class="text-xs sm:text-sm text-slate-500 text-right">
+            전체 <span class="font-bold text-slate-800"><?php echo number_format($total_count) ?></span>건 · <?php echo $page ?>페이지
         </div>
     </div>
 
@@ -122,7 +126,7 @@ add_stylesheet('<script src="https://unpkg.com/lucide@latest"></script>', 0);
     <div class="mb-6 relative group">
         <div class="overflow-x-auto no-scrollbar pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
             <div class="flex gap-2 min-w-max">
-                <a href="<?php echo $board_skin_url ?>" class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 whitespace-nowrap <?php echo (!$sca) ? 'bg-slate-800 text-white shadow-md' : 'bg-white text-slate-500 border border-gray-200 hover:bg-gray-50'; ?>">전체</a>
+                <a href="<?php echo get_pretty_url($bo_table) ?>" class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 whitespace-nowrap <?php echo (!$sca) ? 'bg-slate-800 text-white shadow-md' : 'bg-white text-slate-500 border border-gray-200 hover:bg-gray-50'; ?>">전체</a>
                 <?php 
                 $categories = explode('|', $board['bo_category_list']);
                 foreach ($categories as $category) {
@@ -145,7 +149,7 @@ add_stylesheet('<script src="https://unpkg.com/lucide@latest"></script>', 0);
             $thumb = get_list_thumbnail($board['bo_table'], $list[$i]['wr_id'], $board['bo_gallery_width'], $board['bo_gallery_height'], false, true);
             $is_secret = strstr($list[$i]['wr_option'], 'secret');
         ?>
-        <div class="group relative bg-white border border-gray-300 rounded-xl p-4 sm:p-5 shadow-sm hover:border-blue-500 hover:shadow-xl transition-all duration-300 flex flex-col sm:flex-row gap-4">
+        <article class="group relative bg-white border border-gray-200 rounded-xl p-4 sm:p-5 hover:border-blue-300 hover:shadow-md transition-all duration-200 flex flex-col sm:flex-row gap-4">
             
             <?php if ($is_checkbox) { ?>
             <div class="absolute top-4 right-4 sm:static sm:top-auto sm:right-auto flex items-start pt-1">
@@ -183,15 +187,12 @@ add_stylesheet('<script src="https://unpkg.com/lucide@latest"></script>', 0);
                         </a>
 
                         <?php if ($list[$i]['icon_new']) { ?>
-                            <span class="text-[10px] font-bold px-1.5 py-0.5 rounded border bg-red-100 text-red-600 border-red-200 ml-1.5">N</span>
-                        <?php } ?>
-                        <?php if ($list[$i]['icon_hot']) { ?>
-                            <span class="text-[10px] font-bold px-1.5 py-0.5 rounded border bg-orange-100 text-orange-600 border-orange-200 ml-1.5">H</span>
+                            <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-600 ml-1.5">NEW</span>
                         <?php } ?>
                     </h3>
 
                     <!-- Content Summary (If not secret) -->
-                    <p class="text-sm text-slate-500 line-clamp-2 mb-3 leading-relaxed">
+                    <p class="hidden sm:block text-sm text-slate-500 line-clamp-1 mb-3 leading-relaxed">
                         <?php 
                         if ($is_secret) { 
                             echo "비밀글입니다.";
@@ -236,14 +237,14 @@ add_stylesheet('<script src="https://unpkg.com/lucide@latest"></script>', 0);
             </div>
             
             <!-- Thumbnail (Mobile) -->
-            <div class="block sm:hidden w-full h-40 mt-2 order-last">
+            <div class="board-thumb-mobile block sm:hidden w-full mt-2 order-last overflow-hidden rounded-lg">
                 <a href="<?php echo $list[$i]['href'] ?>">
                     <img src="<?php echo $thumb['src'] ?>" alt="<?php echo $thumb['alt'] ?>" class="w-full h-full object-cover rounded-lg">
                 </a>
             </div>
             <?php } ?>
 
-        </div>
+        </article>
         <?php } ?>
 
         <?php if (count($list) == 0) { ?>

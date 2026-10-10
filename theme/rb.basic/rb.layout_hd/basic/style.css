@@ -1,4 +1,20 @@
 /* 레이아웃 CSS */
 @media all and (max-width:1024px) { 
     .gnb_wrap .inner {padding-left: 0px !important; padding-right: 0px !important;}
+    .gnb_wrap #search_top_btn {display:none;}
+    .gnb_wrap .snb_wrap .qm_wrap .mobile_header_route {
+        display:inline-flex !important;
+        align-items:center;
+        justify-content:center;
+        width:auto;
+        min-height:40px;
+        margin-top:10px;
+        padding:0 13px;
+        border-radius:10px;
+        background:#eef7fc;
+        color:#0b6fa9;
+        font-size:13px;
+        font-weight:700;
+        line-height:40px;
+    }
 }

@@ -20,16 +20,10 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_THEME_URL.'/rb.layout_ft/'.$rb
                     <a href="<?php echo get_pretty_url('content', 'privacy'); ?>">개인정보 처리방침</a>
                 </ul>
                 <ul class="footer_gnb_ul2">
-                    <?php if(defined('G5_COMMUNITY_USE') == false || G5_COMMUNITY_USE) { ?>
-                        <?php if (defined('G5_USE_SHOP') && G5_USE_SHOP) { ?>
-                        <a href="<?php echo G5_SHOP_URL ?>/">마켓</a>
-                        <?php } ?>
-                    <?php } ?>
-
-                    <a href="<?php echo G5_BBS_URL ?>/qalist.php">1:1 문의</a>
-                    <a href="<?php echo G5_BBS_URL ?>/faq.php">FAQ</a>
-                    <a href="<?php echo G5_URL ?>/rb/new.php">새글</a>
-                    <a href="<?php echo G5_BBS_URL ?>/current_connect.php">접속자 <?php echo connect("theme/rb.connect"); ?></a>
+                    <a href="<?php echo G5_BBS_URL ?>/board.php?bo_table=notice">교회소식</a>
+                    <a href="<?php echo G5_BBS_URL ?>/board.php?bo_table=gallery">갤러리</a>
+                    <a href="<?php echo G5_BBS_URL ?>/board.php?bo_table=youtube">유튜브</a>
+                    <a href="<?php echo G5_URL ?>/#directions">오시는 길</a>
                 </ul>
                 <div class="cb"></div>
             </div>
@@ -40,9 +34,9 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_THEME_URL.'/rb.layout_ft/'.$rb
                     <li class="footer_copy_ul1_li1">
                        
                         <?php if (!empty($rb_builder['bu_logo_pc_w'])) { ?>
-                            <a href="#"><img src="<?php echo G5_URL ?>/data/logos/pc_w?ver=<?php echo G5_SERVER_TIME ?>"></a>
+                            <a href="<?php echo G5_URL ?>" aria-label="세부한인교회 홈"><img src="<?php echo G5_URL ?>/data/logos/pc_w?ver=<?php echo G5_SERVER_TIME ?>" alt="세부한인교회"></a>
                         <?php } else { ?>
-                            <a href="#"><img src="<?php echo G5_THEME_URL ?>/rb.img/logos/pc_w.png?ver=<?php echo G5_SERVER_TIME ?>"></a>
+                            <a href="<?php echo G5_URL ?>" aria-label="세부한인교회 홈"><img src="<?php echo G5_THEME_URL ?>/rb.img/logos/pc_w.png?ver=<?php echo G5_SERVER_TIME ?>" alt="세부한인교회"></a>
                         <?php } ?>
                         
                         <div class="mobile">
@@ -52,16 +46,10 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_THEME_URL.'/rb.layout_ft/'.$rb
 
                     </li>
                     <li class="footer_copy_ul1_li2">
-                        <?php if (!empty($rb_builder['bu_1'])) { ?><dd><?php echo $rb_builder['bu_1'] ?></dd><?php } ?>
-                        <?php if (!empty($rb_builder['bu_2'])) { ?><dd>대표자 : <?php echo $rb_builder['bu_2'] ?></dd><?php } ?>
-                        <?php if (!empty($rb_builder['bu_3'])) { ?><dd>대표전화 : <?php echo $rb_builder['bu_3'] ?></dd><?php } ?>
-                        <?php if (!empty($rb_builder['bu_4'])) { ?><dd>팩스 : <?php echo $rb_builder['bu_4'] ?></dd><?php } ?>
-                        <?php if (!empty($rb_builder['bu_5'])) { ?><dd>사업자등록번호 : <?php echo $rb_builder['bu_5'] ?></dd><?php } ?>
-                        <?php if (!empty($rb_builder['bu_6'])) { ?><dd>통신판매업신고번호 : <?php echo $rb_builder['bu_6'] ?></dd><?php } ?>
-                        <?php if (!empty($rb_builder['bu_7'])) { ?><dd>부가통신사업자번호 : <?php echo $rb_builder['bu_7'] ?></dd><?php } ?>
-                        <?php if (!empty($rb_builder['bu_8'])) { ?><dd><?php echo $rb_builder['bu_8'] ?><?php } ?></dd>
-                        <?php if (!empty($rb_builder['bu_10'])) { ?><dd>주소 : <?php if (!empty($rb_builder['bu_9'])) { ?>(<?php echo $rb_builder['bu_9'] ?>) <?php } ?> <?php echo $rb_builder['bu_10'] ?></dd><?php } ?>
-                        <?php if (!empty($rb_builder['bu_11'])) { ?><dd>개인정보책임자(이메일) : <?php echo $rb_builder['bu_11'] ?></dd><?php } ?>
+                        <dd>세부한인교회</dd>
+                        <dd>주소 : 402 J. Solon Drive, Kamputhaw, Cebu City 6000, Philippines</dd>
+                        <dd>전화 : <a href="tel:+639175230153">+63 917 523 0153</a></dd>
+                        <dd>주일예배 : 오전 9:00 · 오전 11:00</dd>
                         <div class="cb"></div>
                     </li>
                     

@@ -6,6 +6,10 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 ?>
 
 <div class="rb_bbs_wrap rb_bbs_write_wrap">
+    <header class="board-write-header">
+        <p><?php echo get_text($board['bo_subject']) ?></p>
+        <h1><?php echo $w == 'u' ? '게시글 수정' : '새 글 작성' ?></h1>
+    </header>
     
     <form name="fwrite" id="fwrite" action="<?php echo $action_url ?>" onsubmit="return fwrite_submit(this);" method="post" enctype="multipart/form-data" autocomplete="off" style="width:<?php echo $width; ?>">
     <input type="hidden" name="uid" value="<?php echo get_uniqid(); ?>">
@@ -23,6 +27,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
     <!-- 카테고리 { -->
     <?php if ($is_category) { ?>
     <div class="rb_inp_wrap">
+        <label class="board-field-label" for="ca_name">분류 <span>필수</span></label>
         <ul>
             <select name="ca_name" id="ca_name" required class="select ca_name">
                 <option value="">분류를 선택하세요</option>
@@ -35,6 +40,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 
     <!-- 제목 { -->
     <div class="rb_inp_wrap">
+        <label class="board-field-label" for="wr_subject">제목 <span>필수</span></label>
         <ul>
             <input type="text" name="wr_subject" value="<?php echo $subject ?>" id="wr_subject" required class="input required full_input" maxlength="255" placeholder="제목을 입력하세요.">
         </ul>
@@ -88,6 +94,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
     
     <!-- 내용 { -->
     <div class="rb_inp_wrap">
+        <label class="board-field-label" for="wr_content">내용 <span>필수</span></label>
         <ul>
             <div class="wr_content <?php echo $is_dhtml_editor ? $config['cf_editor'] : ''; ?>">
                 <?php if($board['bo_write_min'] || $board['bo_write_max']) { ?>
@@ -131,7 +138,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
     <div class="rb_inp_wrap">
         <ul class="guest_inp_wrap">
 
-            <lebel class="help_text">작성자 정보를 입력해주세요. 비밀번호는 게시글 수정 시 사용됩니다.</lebel>
+            <p class="help_text">작성자 정보를 입력해주세요. 비밀번호는 게시글 수정 시 사용됩니다.</p>
             <li>
                 
                 <input type="text" name="wr_name" value="<?php echo $name ?>" id="wr_name" required class="input_tiny required" placeholder="성함">
@@ -180,8 +187,8 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                     <!-- 파일 { -->
                     <div class="rb_inp_wrap rb_inp_wrap_gap">
                         <label class="help_text">
-                        최대 <?php echo $board['bo_upload_count']; ?>개 / 이미지 및 일반 파일을 첨부할 수 있어요.<br>
-                        파일은 [삭제] 를 클릭하는경우 즉시 삭제되며, 첫번째 이미지가 대표이미지로 설정되요.
+                        이미지와 일반 파일을 최대 <?php echo $board['bo_upload_count']; ?>개까지 첨부할 수 있습니다.<br>
+                        첫 번째 이미지가 목록의 대표 이미지로 사용됩니다.
                         </label>
                         
                         <div class="">
@@ -384,7 +391,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
     
     <div class="rb_inp_wrap_confirm">
         <a href="<?php echo get_pretty_url($bo_table); ?>" class="btn_cancel btn font-B">취소</a>
-        <button type="submit" id="btn_submit" accesskey="s" class="btn_submit btn font-B">작성완료</button>
+        <button type="submit" id="btn_submit" accesskey="s" class="btn_submit btn font-B"><?php echo $w == 'u' ? '수정' : '등록' ?></button>
     </div>
 
     </form>

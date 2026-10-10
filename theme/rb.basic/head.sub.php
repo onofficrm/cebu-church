@@ -38,11 +38,7 @@ header("Pragma: no-cache"); // HTTP/1.0
 <meta charset="utf-8">
 
 <!-- viewport { -->
-<?php if(isset($rb_builder['bu_viewport']) && $rb_builder['bu_viewport']) { ?>
-<meta name="viewport" content="width=device-width,initial-scale=<?php echo $rb_builder['bu_viewport'] ?>,minimum-scale=<?php echo $rb_builder['bu_viewport'] ?>,maximum-scale=<?php echo $rb_builder['bu_viewport'] ?>,user-scalable=no" />
-<?php } else { ?>
-<meta name="viewport" content="width=device-width,initial-scale=0.9,minimum-scale=0.9,maximum-scale=0.9,user-scalable=no" />
-<?php } ?>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="HandheldFriendly" content="true" />
 <meta http-equiv="imagetoolbar" content="no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
