@@ -20,6 +20,8 @@ add_stylesheet('<script src="https://unpkg.com/lucide@latest"></script>', 0);
     .line-clamp-1 { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
     .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .board-thumb-mobile { aspect-ratio: 4 / 3; height: auto; }
+    .board-summary { display: none; }
+    @media (min-width: 640px) { .board-summary { display: -webkit-box; } }
 </style>
 
 <div class="rb_board_wrap py-5 md:py-12 px-4 sm:px-6 max-w-5xl mx-auto">
@@ -68,7 +70,8 @@ add_stylesheet('<script src="https://unpkg.com/lucide@latest"></script>', 0);
     </div>
 
     <!-- Toolbar -->
-    <div class="flex justify-between items-center bg-white px-3 py-2 rounded-xl border border-gray-100 mb-5 gap-3">
+    <div class="flex justify-between items-center <?php echo (!$is_admin && !$is_checkbox) ? 'mb-5' : 'bg-white px-3 py-2 rounded-xl border border-gray-100 mb-5 gap-3'; ?>">
+        <?php if ($is_admin || $is_checkbox) { ?>
         <div class="flex items-center gap-4 w-full sm:w-auto">
             
             <?php if ($is_admin) { ?>
@@ -115,6 +118,7 @@ add_stylesheet('<script src="https://unpkg.com/lucide@latest"></script>', 0);
             </div>
             <?php } ?>
         </div>
+        <?php } ?>
 
         <div class="text-xs sm:text-sm text-slate-500 text-right">
             전체 <span class="font-bold text-slate-800"><?php echo number_format($total_count) ?></span>건 · <?php echo $page ?>페이지
@@ -192,7 +196,7 @@ add_stylesheet('<script src="https://unpkg.com/lucide@latest"></script>', 0);
                     </h3>
 
                     <!-- Content Summary (If not secret) -->
-                    <p class="hidden sm:block text-sm text-slate-500 line-clamp-1 mb-3 leading-relaxed">
+                    <p class="board-summary text-sm text-slate-500 line-clamp-1 mb-3 leading-relaxed">
                         <?php 
                         if ($is_secret) { 
                             echo "비밀글입니다.";
