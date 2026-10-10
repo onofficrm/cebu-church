@@ -26,7 +26,6 @@ $icons = [
 
 $church_address = '402 J. Solon Drive, Kamputhaw, Cebu City 6000';
 $church_phone = '+63 917 523 0153';
-$map_url = 'https://www.google.com/maps/search/?api=1&query='.rawurlencode($church_address);
 $kakao_url = !empty($rb_builder['bu_sns1']) ? trim($rb_builder['bu_sns1']) : '';
 ?>
 
@@ -73,10 +72,6 @@ $kakao_url = !empty($rb_builder['bu_sns1']) ? trim($rb_builder['bu_sns1']) : '';
                 <div class="max-w-xl glass-hero p-6 md:p-8 rounded-[2rem] mt-6 mx-auto">
                     <p class="text-base md:text-lg font-light text-indigo-50 italic">"주 예수를 믿으라 그리하면 너와 네 집이 구원을 받으리라"</p>
                     <div class="mt-3 text-[9px] text-white/30 tracking-widest uppercase italic">Acts 16:31</div>
-                </div>
-                <div class="flex justify-center gap-3 mt-6">
-                    <a href="#service-info" class="min-h-[48px] px-5 bg-white text-slate-900 rounded-xl font-bold flex items-center justify-center gap-2"><?php echo $icons['calendar'] ?> 예배시간</a>
-                    <a href="<?php echo $map_url ?>" target="_blank" rel="noopener" class="min-h-[48px] px-5 bg-white/10 text-white border border-white/30 rounded-xl font-bold flex items-center justify-center gap-2"><?php echo $icons['map-pin'] ?> 길찾기</a>
                 </div>
             </div>
 
